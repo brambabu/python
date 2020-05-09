@@ -3,6 +3,7 @@ import time
     
     
 class game_start:
+    sleep_between_actions = 1
     list_of_snakes = {17:10,54:20,62:43,64:4,87:63,93:20,95:20,99:21}
     list_of_ladders = {4:10,9:22,20:18,28:56,40:19,51:16,63:18,71:20}
     fscore = 0
@@ -15,8 +16,24 @@ class game_start:
         self.count_1 = 0
         self.count_2 = 0
         self.c = 0
-        print(f"match players between {self.fname} and {self.sname}💪💪💪💪💪")
-        
+        print( '''~~~~~~~~>WELCOME TO SNAKE AND LADDER ###
+        @@==========================@@
+                            
+                            
+        Rules :
+        ------   
+            1. If The player will get 6 at starting then only he will enter the game.
+            2. If the player get exact 100 points then only player wins.
+            3. when you will get snake your score will decrease based on the snake.
+            4. when you will get ladder your score will increase based on the ladder.
+            
+            
+            
+            ''')
+            
+        print(f"**** MATCH PLAYERS BETWEEN {self.fname} AND {self.sname} *****💪💪💪💪💪",end='\n\n')
+        print('-------------------------------------------------------')
+                                            
         while(True):
             
             first_player_rolling_dice = random.randint(1,6)
@@ -35,12 +52,12 @@ class game_start:
                 if self.fname_score in self.list_of_snakes.keys():
                     self.fname_score -= self.hitting_snake(self.fname_score)
                     
-                    print('fname successful hitting_snake is',self.fname_score)
+                    print(f"{self.fname} oh!! no ~~~~>snake hitted {self.fname_score}")
                     
                 if self.fname_score in self.list_of_ladders.keys():
                     self.fname_score += self.climb_ladder(self.fname_score)
                     
-                    print('fname successful climb_on_ladder',self.fname_score)
+                    print(f" woww {self.fname} is on ladder {self.fname_score}")
                     
                 
                 
@@ -61,13 +78,13 @@ class game_start:
                 if self.sname_score in self.list_of_snakes:
                     self.sname_score -= self.hitting_snake(self.sname_score)
                     
-                    print('sname successful hitting_snake',self.sname_score)
+                    print(f"{self.sname} oh!! no ~~~~>snake hitted {self.sname_score}")
                     
                 
                 if self.sname_score in self.list_of_ladders:
                     self.sname_score += self.climb_ladder(self.sname_score)
                     
-                    print('sname successful climb_ladder',self.sname_score)
+                    print(f" woww {self.sname} is on ladder {self.sname_score}")
                     
                 
                 
@@ -99,6 +116,7 @@ class game_start:
             
             
     def rolling_dice(self):
+        time.sleep(self.sleep_between_actions)
         return random.randint(1,6)
     
     def hitting_snake(self,snake_no):
